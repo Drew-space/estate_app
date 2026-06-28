@@ -281,7 +281,7 @@ class _PropertyDetailScreenState extends State<PropertyDetailScreen> {
                           children: [
                             CircleAvatar(
                               radius: 22,
-                              backgroundImage: NetworkImage(
+                              backgroundImage: CachedNetworkImageProvider(
                                 house["agentImage"] ?? "",
                               ),
                             ),

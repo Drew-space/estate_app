@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:estate_app/real-estate/pages/property_detail_screen.dart';
 import 'package:estate_app/real-estate/provider/exam.dart';
 import 'package:flutter/material.dart';
@@ -52,11 +53,27 @@ class PropertyListCard extends ConsumerWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(14),
-                  child: Image.network(
-                    coverImage,
+                  // child: Image.network(
+                  //   coverImage,
+                  //   height: 88,
+                  //   width: 88,
+                  //   fit: BoxFit.cover,
+                  // ),
+                  child: CachedNetworkImage(
+                    imageUrl: coverImage,
                     height: 88,
                     width: 88,
                     fit: BoxFit.cover,
+                    placeholder: (context, url) => Container(
+                      color: Colors.grey.shade200,
+                      child: const Center(
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      ),
+                    ),
+                    errorWidget: (context, url, error) => Container(
+                      color: Colors.grey.shade200,
+                      child: const Icon(Icons.broken_image),
+                    ),
                   ),
                 ),
                 Positioned(
