@@ -6,27 +6,44 @@ class RealExploreSearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 54,
-      padding: const EdgeInsets.symmetric(horizontal: 14),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(14),
-      ),
-      child: const Row(
-        children: [
-          HugeIcon(icon: HugeIcons.strokeRoundedSearch01),
-          SizedBox(width: 10),
-
-          Expanded(
-            child: Text(
-              "Search houses, villas...",
-              style: TextStyle(color: Colors.grey),
+    return TextField(
+      decoration: InputDecoration(
+        contentPadding: EdgeInsets.all(12),
+        prefixIcon: SizedBox(
+          width: 20,
+          height: 20,
+          child: Center(
+            child: HugeIcon(
+              icon: HugeIcons.strokeRoundedSearch01,
+              color: Colors.grey.shade600,
+              size: 20,
             ),
           ),
+        ),
+        suffixIcon: SizedBox(
+          width: 20,
+          height: 20,
+          child: Center(
+            child: HugeIcon(
+              icon: HugeIcons.strokeRoundedFilterHorizontal,
+              color: Colors.grey.shade600,
+              size: 20,
+            ),
+          ),
+        ),
+        hintText: "Search...",
+        hintStyle: TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.w400,
+          color: Colors.grey.shade600,
+        ),
+        filled: true,
+        fillColor: Colors.white,
 
-          HugeIcon(icon: HugeIcons.strokeRoundedFilterHorizontal),
-        ],
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide.none,
+        ),
       ),
     );
   }
