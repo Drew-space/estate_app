@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -64,10 +65,27 @@ class _PropertyDetailScreenState extends State<PropertyDetailScreen> {
                         },
                         itemCount: images.length,
                         itemBuilder: (context, index) {
-                          return Image.network(
-                            images[index],
+                          // return Image.network(
+                          //   images[index],
+                          //   fit: BoxFit.cover,
+                          //   width: double.infinity,
+                          // );
+                          return CachedNetworkImage(
+                            imageUrl: images[index],
                             fit: BoxFit.cover,
                             width: double.infinity,
+                            placeholder: (context, url) => Container(
+                              color: Colors.grey.shade200,
+                              child: const Center(
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                ),
+                              ),
+                            ),
+                            errorWidget: (context, url, error) => Container(
+                              color: Colors.grey.shade200,
+                              child: const Icon(Icons.broken_image),
+                            ),
                           );
                         },
                       ),
@@ -369,11 +387,30 @@ class _PropertyDetailScreenState extends State<PropertyDetailScreen> {
                               itemBuilder: (context, index) {
                                 return ClipRRect(
                                   borderRadius: BorderRadius.circular(14),
-                                  child: Image.network(
-                                    images[index],
-                                    width: 80,
+                                  // child: Image.network(
+                                  //   images[index],
+                                  //   width: 80,
+                                  //   height: 80,
+                                  //   fit: BoxFit.cover,
+                                  // ),
+                                  child: CachedNetworkImage(
+                                    imageUrl: images[index],
                                     height: 80,
+                                    width: 80,
                                     fit: BoxFit.cover,
+                                    placeholder: (context, url) => Container(
+                                      color: Colors.grey.shade200,
+                                      child: const Center(
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: 2,
+                                        ),
+                                      ),
+                                    ),
+                                    errorWidget: (context, url, error) =>
+                                        Container(
+                                          color: Colors.grey.shade200,
+                                          child: const Icon(Icons.broken_image),
+                                        ),
                                   ),
                                 );
                               },
