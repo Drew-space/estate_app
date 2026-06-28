@@ -1,6 +1,7 @@
 import 'package:estate_app/real-estate/utils/real_explore_recommendation_grid.dart';
 import 'package:estate_app/real-estate/utils/real_explore_search_bar.dart';
 import 'package:estate_app/real-estate/utils/real_navbar.dart';
+import 'package:estate_app/real-estate/utils/recommendation.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 
@@ -20,7 +21,7 @@ class PropertySearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffF8F8F8),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -33,9 +34,7 @@ class PropertySearchScreen extends StatelessWidget {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => const RealNavbar(),
-                          ),
+                          MaterialPageRoute(builder: (context) => RealNavbar()),
                         );
                       },
                       child: Container(
@@ -67,13 +66,12 @@ class PropertySearchScreen extends StatelessWidget {
 
                 const SizedBox(height: 20),
 
-                /// SEARCH
                 Row(children: [const Expanded(child: RealExploreSearchBar())]),
 
                 const SizedBox(height: 20),
 
                 /// GRID
-                const RealExploreRecommendationGrid(),
+                Recommendation(),
               ],
             ),
           ),

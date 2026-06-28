@@ -4,9 +4,6 @@ import 'package:estate_app/real-estate/provider/exam.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-/// Horizontal list-style property card.
-/// Used by both the Explore screen and the Favorites screen,
-/// so the favorite toggle behaves identically everywhere.
 class PropertyListCard extends ConsumerWidget {
   final Map<String, dynamic> house;
 
@@ -18,8 +15,6 @@ class PropertyListCard extends ConsumerWidget {
     final coverImage = images.isNotEmpty ? images.first : "";
     final houseId = house["id"] as String;
 
-    // ref.watch here means: if this specific house's favorite
-    // status changes, ONLY this card rebuilds — not the whole list.
     final isFavorite = ref.watch(favoritesProvider).contains(houseId);
 
     return GestureDetector(

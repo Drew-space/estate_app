@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive_flutter/adapters.dart';
 
 final categoriesProvider = Provider<List<String>>((ref) {
   return ["All", "House", "Villa", "Apartments", "Office"];
@@ -6,28 +7,32 @@ final categoriesProvider = Provider<List<String>>((ref) {
 
 final selectedCategoryProvider = StateProvider<String>((ref) => "All");
 
+/// This class manages the list of favorited house IDs.
+/// I'm using Hive here so that when the user favorites a house,
+/// it's saved to the device and is still there even after
+/// closing and reopening the app (or going offline).
 class FavoritesNotifier extends Notifier<Set<String>> {
+  Box get favouritesBox => Hive.box("favouritesBox");
+
   @override
   Set<String> build() {
-    return <String>{};
+    final saved = favouritesBox.get("favouriteIds", defaultValue: <String>[]);
+
+    return Set<String>.from(saved);
   }
 
   void toggle(String houseId) {
-    Set<String> updatedFavorites = Set<String>.from(state);
+    final updated = Set<String>.from(state);
 
-    bool alreadyFavorited = updatedFavorites.contains(houseId);
-
-    if (alreadyFavorited) {
-      updatedFavorites.remove(houseId);
+    if (updated.contains(houseId)) {
+      updated.remove(houseId);
     } else {
-      updatedFavorites.add(houseId);
+      updated.add(houseId);
     }
 
-    state = updatedFavorites;
-  }
+    state = updated;
 
-  bool isFavorite(String houseId) {
-    return state.contains(houseId);
+    favouritesBox.put("favouriteIds", updated.toList());
   }
 }
 
@@ -35,6 +40,7 @@ final favoritesProvider = NotifierProvider<FavoritesNotifier, Set<String>>(
   FavoritesNotifier.new,
 );
 
+/// All houses
 final housesProvider = Provider<List<Map<String, dynamic>>>((ref) {
   return [
     {
@@ -203,20 +209,31 @@ final filteredHousesProvider = Provider<List<Map<String, dynamic>>>((ref) {
       .toList();
 });
 
+/// This gives me only the houses that are currently favorited.
+/// I use this on the Favorites screen instead of housesProvider.
 final favoriteHousesProvider = Provider<List<Map<String, dynamic>>>((ref) {
   final allHouses = ref.watch(housesProvider);
   final favoriteIds = ref.watch(favoritesProvider);
   final selectedCategory = ref.watch(selectedCategoryProvider);
 
-  final favorited = allHouses
-      .where((house) => favoriteIds.contains(house["id"]))
-      .toList();
+  List<Map<String, dynamic>> favorited = [];
+
+  for (final house in allHouses) {
+    if (favoriteIds.contains(house["id"])) {
+      favorited.add(house);
+    }
+  }
 
   if (selectedCategory == "All") {
     return favorited;
   }
 
-  return favorited
-      .where((house) => house["category"] == selectedCategory)
-      .toList();
+  List<Map<String, dynamic>> filtered = [];
+  for (final house in favorited) {
+    if (house["category"] == selectedCategory) {
+      filtered.add(house);
+    }
+  }
+
+  return filtered;
 });

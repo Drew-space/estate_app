@@ -38,7 +38,7 @@ class RealExploreSearchBar extends StatelessWidget {
           color: Colors.grey.shade600,
         ),
         filled: true,
-        fillColor: Colors.white,
+        fillColor: Colors.grey.shade100,
 
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
