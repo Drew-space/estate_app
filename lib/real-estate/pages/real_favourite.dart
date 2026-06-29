@@ -57,15 +57,13 @@ class RealFavourite extends ConsumerWidget {
                       ),
                     ),
                   ),
-                  // empty box the same width as the back button,
-                  // so the title stays perfectly centered
+
                   const SizedBox(width: 42),
                 ],
               ),
 
               const SizedBox(height: 20),
 
-              /// FILTER CHIPS — same category filter as Explore
               SizedBox(
                 height: 42,
                 child: ListView.separated(

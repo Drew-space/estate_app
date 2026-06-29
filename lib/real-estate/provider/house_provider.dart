@@ -7,32 +7,47 @@ final categoriesProvider = Provider<List<String>>((ref) {
 
 final selectedCategoryProvider = StateProvider<String>((ref) => "All");
 
-/// This class manages the list of favorited house IDs.
-/// I'm using Hive here so that when the user favorites a house,
-/// it's saved to the device and is still there even after
-/// closing and reopening the app (or going offline).
 class FavoritesNotifier extends Notifier<Set<String>> {
-  Box get favouritesBox => Hive.box("favouritesBox");
+  Box favouritesBox = Hive.box("favouritesBox");
 
   @override
   Set<String> build() {
-    final saved = favouritesBox.get("favouriteIds", defaultValue: <String>[]);
+    List savedList = favouritesBox.get("favouriteIds", defaultValue: []);
 
-    return Set<String>.from(saved);
+    Set<String> favSet = {};
+    for (var id in savedList) {
+      favSet.add(id.toString());
+    }
+
+    return favSet;
   }
 
   void toggle(String houseId) {
-    final updated = Set<String>.from(state);
+    Set<String> currentFavs = state;
+    Set<String> newFavs = {};
 
-    if (updated.contains(houseId)) {
-      updated.remove(houseId);
-    } else {
-      updated.add(houseId);
+    for (var id in currentFavs) {
+      newFavs.add(id);
     }
 
-    state = updated;
+    bool isAlreadyFav = false;
+    for (var id in newFavs) {
+      if (id == houseId) {
+        isAlreadyFav = true;
+      }
+    }
 
-    favouritesBox.put("favouriteIds", updated.toList());
+    if (isAlreadyFav == true) {
+      newFavs.remove(houseId);
+    } else {
+      newFavs.add(houseId);
+    }
+
+    state = newFavs;
+
+    // now save it to hive so it doesnt disappear when app closes
+    List<String> listToSave = newFavs.toList();
+    favouritesBox.put("favouriteIds", listToSave);
   }
 }
 

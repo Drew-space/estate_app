@@ -14,7 +14,7 @@ class ConnectivityService {
   final Connectivity _connectivity = Connectivity();
   late final StreamSubscription<List<ConnectivityResult>> _subscription;
 
-  bool? _wasOnline; // null = unknown (first check, don't toast)
+  bool? _wasOnline;
 
   ConnectivityService() {
     _subscription = _connectivity.onConnectivityChanged.listen(_handleChange);
@@ -23,13 +23,12 @@ class ConnectivityService {
   void _handleChange(List<ConnectivityResult> results) {
     final isOnline = results.any((r) => r != ConnectivityResult.none);
 
-    // Skip the very first event so we don't toast on app launch
     if (_wasOnline == null) {
       _wasOnline = isOnline;
       return;
     }
 
-    if (_wasOnline == isOnline) return; // no actual change, ignore
+    if (_wasOnline == isOnline) return;
 
     _wasOnline = isOnline;
 

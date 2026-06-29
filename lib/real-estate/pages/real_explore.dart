@@ -95,11 +95,6 @@ class NotificationIcon extends StatelessWidget {
   }
 }
 
-/// GRID
-
-/// HOUSE CARD
-
-/// FILTER CHIP
 class FilterChipWidget extends StatelessWidget {
   final String title;
   final bool selected;
