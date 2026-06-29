@@ -65,3 +65,25 @@ For favorites, Hive works fine for a single device, but if this needed to sync a
 Honestly, coming from javascript ecosystem to flutter/dart the functions are bit confusing but yeah i was able to catch up be of some similarity one the trickiest part was getting the favorites logic to feel instant in the UI while also reliably persisting to Hive without doing it twice or missing an update. Riverpod's `Notifier` made the "feel instant" part easy since the UI just reacts to state changes, but I had to be careful that every state update was paired with a write to Hive, and that the initial `build()` correctly hydrated from whatever was already saved otherwise you'd get a flash of "no favorites" on app start even when there were saved ones.
 
 I kept things intentionally simple here rather than over-engineering no sync queues, no conflict resolution, no offline write-ahead logs. Just: read from Hive on start, write to Hive on every change. For the scope of this app, that's all it needed.
+
+## Screenshots
+
+### Home
+
+![Home Screen](images/home.png)
+
+### Detail Screen
+
+![Detail Screen](images/detail_screen.png)
+
+### Explore
+
+![Explore Screen](images/explore.png)
+
+### Favourites
+
+![Favourites Screen](images/favourites.png)
+
+### Profile
+
+![Favourites Screen](images/profile.png)
