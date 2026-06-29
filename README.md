@@ -70,20 +70,20 @@ I kept things intentionally simple here rather than over-engineering no sync que
 
 ### Home
 
-![Home Screen](images/home.png)
+![Home Screen](assets/images/home.png)
 
 ### Detail Screen
 
-![Detail Screen](images/detail_screen.png)
+![Detail Screen](assets/images/detail_screen.png)
 
 ### Explore
 
-![Explore Screen](images/explore.png)
+![Explore Screen](assets/images/explore.png)
 
 ### Favourites
 
-![Favourites Screen](images/favourites.png)
+![Favourites Screen](assets/images/favourites.png)
 
 ### Profile
 
-![Favourites Screen](images/profile.png)
+![Favourites Screen](assets/images/profile.png)
