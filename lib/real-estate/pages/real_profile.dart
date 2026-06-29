@@ -43,9 +43,7 @@ class RealProfile extends StatelessWidget {
                     const CircleAvatar(
                       radius: 55,
 
-                      backgroundImage: NetworkImage(
-                        "https://static.vecteezy.com/system/resources/thumbnails/044/245/716/small_2x/handsome-man-smiling-with-a-trendy-beard-and-hairstyle-png.png",
-                      ),
+                      backgroundImage: AssetImage('assets/images/avatar.png'),
                     ),
 
                     Positioned(

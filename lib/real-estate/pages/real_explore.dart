@@ -81,7 +81,6 @@ class PropertySearchScreen extends StatelessWidget {
   }
 }
 
-/// NOTIFICATION ICON (moved from file)
 class NotificationIcon extends StatelessWidget {
   const NotificationIcon({super.key});
 
@@ -90,10 +89,7 @@ class NotificationIcon extends StatelessWidget {
     return Container(
       height: 25,
       width: 25,
-      decoration: BoxDecoration(
-        color: const Color(0xffEEF2F6),
-        borderRadius: BorderRadius.circular(50),
-      ),
+
       child: HugeIcon(icon: HugeIcons.strokeRoundedNotification01),
     );
   }
