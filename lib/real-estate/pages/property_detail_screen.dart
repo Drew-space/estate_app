@@ -1,18 +1,21 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:estate_app/real-estate/provider/exam.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class PropertyDetailScreen extends StatefulWidget {
+class PropertyDetailScreen extends ConsumerStatefulWidget {
   final Map<String, dynamic> house;
 
   const PropertyDetailScreen({super.key, required this.house});
 
   @override
-  State<PropertyDetailScreen> createState() => _PropertyDetailScreenState();
+  ConsumerState<PropertyDetailScreen> createState() =>
+      _PropertyDetailScreenState();
 }
 
-class _PropertyDetailScreenState extends State<PropertyDetailScreen> {
+class _PropertyDetailScreenState extends ConsumerState<PropertyDetailScreen> {
   final PageController _pageController = PageController();
   int _currentImage = 0;
 
@@ -44,10 +47,14 @@ class _PropertyDetailScreenState extends State<PropertyDetailScreen> {
       house["facilities"] ?? [],
     );
 
+    final String houseId = house["id"] as String;
+    final bool isFavorite = ref.watch(favoritesProvider).contains(houseId);
+
     return Scaffold(
       backgroundColor: const Color(0xffF8F8F8),
       body: Stack(
         children: [
+          // ... rest stays exactly the same
           SingleChildScrollView(
             padding: EdgeInsets.zero,
             child: Column(
@@ -108,8 +115,17 @@ class _PropertyDetailScreenState extends State<PropertyDetailScreen> {
                             Row(
                               children: [
                                 _CircleIconButton(
-                                  icon: HugeIcons.strokeRoundedFavourite,
-                                  onTap: () {},
+                                  icon: isFavorite
+                                      ? HugeIcons.strokeRoundedFavourite
+                                      : HugeIcons.strokeRoundedFavourite,
+                                  iconColor: isFavorite
+                                      ? Colors.red
+                                      : Colors.black,
+                                  onTap: () {
+                                    ref
+                                        .read(favoritesProvider.notifier)
+                                        .toggle(houseId);
+                                  },
                                 ),
                                 const SizedBox(width: 10),
                                 _CircleIconButton(

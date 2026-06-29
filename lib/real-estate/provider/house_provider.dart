@@ -31,6 +31,7 @@ class FavoritesNotifier extends Notifier<Set<String>> {
     }
 
     bool isAlreadyFav = false;
+
     for (var id in newFavs) {
       if (id == houseId) {
         isAlreadyFav = true;
