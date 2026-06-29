@@ -2,6 +2,7 @@ import 'package:estate_app/real-estate/provider/connectivity_provider.dart';
 import 'package:estate_app/real-estate/utils/real_navbar.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -10,6 +11,7 @@ void main() async {
 
   await Hive.initFlutter();
   await Hive.openBox("favouritesBox");
+
   runApp(const ProviderScope(child: MyApp()));
 }
 

@@ -5,6 +5,7 @@ import 'package:estate_app/real-estate/pages/real_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:flutter/services.dart';
 
 class RealNavbar extends StatefulWidget {
   const RealNavbar({super.key});
@@ -33,17 +34,20 @@ class _RealNavbarState extends State<RealNavbar> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark,
+        systemNavigationBarColor: Colors.transparent,
+        systemNavigationBarIconBrightness: Brightness.dark,
+      ),
+    );
     return Scaffold(
       backgroundColor: Colors.white,
       body: _pages[_selectedIndex],
 
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(
-          left: 16,
-          right: 16,
-          top: 10,
-          bottom: 30,
-        ),
+        padding: const EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 7),
 
         child: GNav(
           backgroundColor: Colors.white,
