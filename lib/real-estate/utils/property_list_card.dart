@@ -124,8 +124,6 @@ class PropertyListCard extends ConsumerWidget {
                         ),
                       ),
 
-                      /// HEART — plain Icon, not HugeIcon, as requested.
-                      // Tapping this toggles the favorite for THIS house only.
                       GestureDetector(
                         onTap: () {
                           ref.read(favoritesProvider.notifier).toggle(houseId);
