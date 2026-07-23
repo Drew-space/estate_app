@@ -27,7 +27,7 @@ class RealFavourite extends ConsumerWidget {
       backgroundColor: const Color(0xffF8F8F8),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 17),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
