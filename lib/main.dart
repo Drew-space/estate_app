@@ -20,7 +20,6 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Initialize connectivity listener once at app root
     ref.watch(connectivityProvider);
 
     return MaterialApp(

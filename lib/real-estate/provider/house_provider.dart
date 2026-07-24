@@ -15,6 +15,7 @@ class FavoritesNotifier extends Notifier<Set<String>> {
     List savedList = favouritesBox.get("favouriteIds", defaultValue: []);
 
     Set<String> favSet = {};
+
     for (var id in savedList) {
       favSet.add(id.toString());
     }

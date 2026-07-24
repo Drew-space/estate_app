@@ -122,7 +122,6 @@ class HouseCard extends StatelessWidget {
 
                       const SizedBox(height: 12),
 
-                      /// PRICE + FAVORITE — replaces the old "view" button
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
