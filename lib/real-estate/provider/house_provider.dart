@@ -47,7 +47,6 @@ class FavoritesNotifier extends Notifier<Set<String>> {
 
     state = newFavs;
 
-    // now save it to hive so it doesnt disappear when app closes
     List<String> listToSave = newFavs.toList();
     favouritesBox.put("favouriteIds", listToSave);
   }
