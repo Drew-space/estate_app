@@ -163,7 +163,9 @@ final housesProvider = Provider<List<Map<String, dynamic>>>((ref) {
     {
       "id": "h5",
       "images": [
-        "https://paltonmorgan.com/naresus/2023/02/paramount-4-1280x719.jpg",
+        "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200",
+        "https://cdn.furnishedhousing.com/property-images/8242683_R.jpg",
+        "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1200",
       ],
       "title": "Luxury House",
       "location": "Osaka, Japan",
@@ -190,7 +192,8 @@ final housesProvider = Provider<List<Map<String, dynamic>>>((ref) {
     {
       "id": "h6",
       "images": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnc1dXL2P0p4-Th64EBakI4UQc0TWV1TTEpVgawnUBegcb9qeiOKxlIN4&s=10",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrMaagRTKYK-vt8N_UkWtAkjBMAnU3rrerCs_t06kAWV5zigPMuaAqRTA&s=10",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9G9ej0B0_IrG5uIDbghfSdTl7ZCO2TbqhLeHjggYYbCK04tigLL7HexRj&s=10",
       ],
       "title": "Green Villa",
       "location": "Kyoto, Japan",
