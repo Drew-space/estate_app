@@ -1,3 +1,4 @@
+import 'package:estate_app/core/widgets/get_user_name.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
@@ -92,9 +93,9 @@ class _RealProfileState extends State<RealProfile> {
 
               const SizedBox(height: 16),
 
-              const Text(
-                "Ethan Walker",
+              const DefaultTextStyle(
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+                child: GetUserName(),
               ),
 
               const SizedBox(height: 24),

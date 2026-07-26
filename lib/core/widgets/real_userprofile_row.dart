@@ -1,3 +1,4 @@
+import 'package:estate_app/core/widgets/get_user_name.dart';
 import 'package:estate_app/core/widgets/real_notificationIcon.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -27,9 +28,9 @@ class RealUserprofileRow extends StatelessWidget {
                   "Good Morning",
                   style: TextStyle(fontSize: 14, color: Colors.grey[600]),
                 ),
-                Text(
-                  "Ethan Walker",
+                DefaultTextStyle(
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  child: const GetUserName(),
                 ),
               ],
             ),
