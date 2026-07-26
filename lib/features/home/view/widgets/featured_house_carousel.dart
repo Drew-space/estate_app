@@ -1,6 +1,6 @@
+import 'package:estate_app/core/widgets/real_house_card.dart';
+import 'package:estate_app/features/home/model/house.dart';
 import 'package:flutter/material.dart';
-import 'real_house.dart';
-import 'real_house_card.dart';
 
 class FeaturedHouseCarousel extends StatefulWidget {
   const FeaturedHouseCarousel({super.key});

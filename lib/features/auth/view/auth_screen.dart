@@ -1,7 +1,7 @@
-import 'package:estate_app/real-estate/auth/utils/auth_action_buttons.dart';
-import 'package:estate_app/real-estate/auth/utils/auth_bottom_sheet.dart';
-import 'package:estate_app/real-estate/auth/utils/auth_headline.dart';
-import 'package:estate_app/real-estate/auth/utils/auth_image_header.dart';
+import 'package:estate_app/features/auth/view/widgets/auth_action_buttons.dart';
+import 'package:estate_app/features/auth/view/widgets/auth_bottom_sheet.dart';
+import 'package:estate_app/features/auth/view/widgets/auth_headline.dart';
+import 'package:estate_app/features/auth/view/widgets/auth_image_header.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter/services.dart';

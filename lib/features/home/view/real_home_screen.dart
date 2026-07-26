@@ -1,8 +1,8 @@
-import 'package:estate_app/real-estate/pages/real_explore.dart';
-import 'package:estate_app/real-estate/utils/featured_house_carousel.dart';
-import 'package:estate_app/real-estate/utils/real_searchbar.dart';
-import 'package:estate_app/real-estate/utils/real_userprofile_row.dart';
-import 'package:estate_app/real-estate/utils/recommendation.dart';
+import 'package:estate_app/core/widgets/real_searchbar.dart';
+import 'package:estate_app/core/widgets/real_userprofile_row.dart';
+import 'package:estate_app/features/explore/view/real_explore.dart';
+import 'package:estate_app/features/home/view/widgets/featured_house_carousel.dart';
+import 'package:estate_app/features/home/view/widgets/recommendation.dart';
 import 'package:flutter/material.dart';
 
 class RealHomeScreen extends StatelessWidget {

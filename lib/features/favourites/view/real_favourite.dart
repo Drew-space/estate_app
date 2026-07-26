@@ -9,8 +9,8 @@
 //   }
 // }
 
-import 'package:estate_app/real-estate/provider/exam.dart';
-import 'package:estate_app/real-estate/utils/property_list_card.dart';
+import 'package:estate_app/core/widgets/property_list_card.dart';
+import 'package:estate_app/features/home/viewmodel/house_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

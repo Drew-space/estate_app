@@ -1,8 +1,7 @@
+import 'package:estate_app/core/network/connectivity_provider.dart';
+import 'package:estate_app/features/auth/view/auth_screen.dart';
 import 'package:estate_app/firebase_options.dart';
-import 'package:estate_app/real-estate/auth/auth_screen.dart';
-import 'package:estate_app/real-estate/provider/connectivity_provider.dart';
-import 'package:estate_app/real-estate/splash_screen.dart';
-import 'package:estate_app/real-estate/utils/real_navbar.dart';
+
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/material.dart';

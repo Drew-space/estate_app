@@ -1,4 +1,4 @@
-import 'package:estate_app/real-estate/utils/real_navbar.dart';
+import 'package:estate_app/core/widgets/real_navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 

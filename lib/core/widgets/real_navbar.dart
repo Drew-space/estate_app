@@ -1,7 +1,7 @@
-import 'package:estate_app/real-estate/pages/real_explore.dart';
-import 'package:estate_app/real-estate/pages/real_favourite.dart';
-import 'package:estate_app/real-estate/pages/real_home_screen.dart';
-import 'package:estate_app/real-estate/pages/real_profile.dart';
+import 'package:estate_app/features/explore/view/real_explore.dart';
+import 'package:estate_app/features/favourites/view/real_favourite.dart';
+import 'package:estate_app/features/home/view/real_home_screen.dart';
+import 'package:estate_app/features/profile/view/real_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:hugeicons/hugeicons.dart';

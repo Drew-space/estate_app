@@ -1,5 +1,6 @@
+import 'package:estate_app/features/home/model/house.dart';
 import 'package:flutter/material.dart';
-import 'real_house.dart';
+
 import 'package:cached_network_image/cached_network_image.dart';
 
 class HouseCard extends StatelessWidget {
