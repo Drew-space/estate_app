@@ -1,9 +1,31 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 
-class RealProfile extends StatelessWidget {
+class RealProfile extends StatefulWidget {
   const RealProfile({super.key});
 
+  @override
+  State<RealProfile> createState() => _RealProfileState();
+
+  static Widget _profileTile({
+    required List<List<dynamic>> icon,
+    required String title,
+  }) {
+    return ListTile(
+      contentPadding: EdgeInsets.zero,
+      leading: HugeIcon(icon: icon, color: const Color(0xff1F2937)),
+      title: Text(
+        title,
+        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+      ),
+      trailing: const Icon(Icons.chevron_right, color: Colors.grey),
+      onTap: () {},
+    );
+  }
+}
+
+class _RealProfileState extends State<RealProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,59 +101,66 @@ class RealProfile extends StatelessWidget {
 
               const Divider(),
 
-              _profileTile(
+              RealProfile._profileTile(
                 icon: HugeIcons.strokeRoundedCalendar03,
                 title: "My Booking",
               ),
 
-              _profileTile(
+              RealProfile._profileTile(
                 icon: HugeIcons.strokeRoundedCreditCard,
                 title: "Payments",
               ),
 
               const Divider(),
 
-              _profileTile(icon: HugeIcons.strokeRoundedUser, title: "Profile"),
+              RealProfile._profileTile(
+                icon: HugeIcons.strokeRoundedUser,
+                title: "Profile",
+              ),
 
-              _profileTile(
+              RealProfile._profileTile(
                 icon: HugeIcons.strokeRoundedNotification01,
                 title: "Notification",
               ),
 
-              _profileTile(
+              RealProfile._profileTile(
                 icon: HugeIcons.strokeRoundedShield01,
                 title: "Security",
               ),
 
-              _profileTile(
+              RealProfile._profileTile(
                 icon: HugeIcons.strokeRoundedLanguageCircle,
                 title: "Language",
               ),
 
-              _profileTile(
+              RealProfile._profileTile(
                 icon: HugeIcons.strokeRoundedInformationCircle,
                 title: "Help Center",
               ),
 
-              _profileTile(
+              RealProfile._profileTile(
                 icon: HugeIcons.strokeRoundedUserGroup,
                 title: "Invite Friends",
               ),
 
-              ListTile(
-                contentPadding: EdgeInsets.zero,
-                leading: HugeIcon(
-                  icon: HugeIcons.strokeRoundedLogout03,
-                  color: Colors.red,
-                ),
-                title: const Text(
-                  "Logout",
-                  style: TextStyle(
+              GestureDetector(
+                child: ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  leading: HugeIcon(
+                    icon: HugeIcons.strokeRoundedLogout03,
                     color: Colors.red,
-                    fontWeight: FontWeight.w600,
                   ),
+                  title: const Text(
+                    "Logout",
+                    style: TextStyle(
+                      color: Colors.red,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  onTap: () {
+                    FirebaseAuth.instance.signOut();
+                  },
                 ),
-                onTap: () {},
               ),
 
               const SizedBox(height: 30),
@@ -139,22 +168,6 @@ class RealProfile extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  static Widget _profileTile({
-    required List<List<dynamic>> icon,
-    required String title,
-  }) {
-    return ListTile(
-      contentPadding: EdgeInsets.zero,
-      leading: HugeIcon(icon: icon, color: const Color(0xff1F2937)),
-      title: Text(
-        title,
-        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-      ),
-      trailing: const Icon(Icons.chevron_right, color: Colors.grey),
-      onTap: () {},
     );
   }
 }
