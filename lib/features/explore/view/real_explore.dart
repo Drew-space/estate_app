@@ -1,0 +1,125 @@
+import 'package:estate_app/core/widgets/real_navbar.dart';
+import 'package:estate_app/features/explore/view/widgets/real_explore_search_bar.dart';
+import 'package:estate_app/features/home/view/widgets/recommendation.dart';
+import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
+
+class RealExplore extends StatelessWidget {
+  const RealExplore({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const PropertySearchScreen();
+  }
+}
+
+/// MAIN SCREEN
+class PropertySearchScreen extends StatelessWidget {
+  const PropertySearchScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => RealNavbar()),
+                        );
+                      },
+                      child: Container(
+                        height: 42,
+                        width: 42,
+                        decoration: BoxDecoration(
+                          color: const Color(0xffEEF2F6),
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        child: const Icon(Icons.arrow_back),
+                      ),
+                    ),
+
+                    const Expanded(
+                      child: Center(
+                        child: Text(
+                          "Search for Your Ideal Home",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    const NotificationIcon(),
+                  ],
+                ),
+
+                const SizedBox(height: 20),
+
+                Row(children: [const Expanded(child: RealExploreSearchBar())]),
+
+                const SizedBox(height: 20),
+
+                /// GRID
+                Recommendation(),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class NotificationIcon extends StatelessWidget {
+  const NotificationIcon({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 25,
+      width: 25,
+
+      child: HugeIcon(icon: HugeIcons.strokeRoundedNotification01),
+    );
+  }
+}
+
+class FilterChipWidget extends StatelessWidget {
+  final String title;
+  final bool selected;
+
+  const FilterChipWidget({
+    super.key,
+    required this.title,
+    this.selected = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(right: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      decoration: BoxDecoration(
+        color: selected ? const Color(0xff246BFD) : const Color(0xffEEF2F6),
+        borderRadius: BorderRadius.circular(50),
+      ),
+      child: Text(
+        title,
+        style: TextStyle(
+          color: selected ? Colors.white : Colors.black87,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+    );
+  }
+}
