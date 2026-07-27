@@ -94,7 +94,11 @@ class _RealProfileState extends State<RealProfile> {
               const SizedBox(height: 16),
 
               const DefaultTextStyle(
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.blue,
+                ),
                 child: GetUserName(),
               ),
 
