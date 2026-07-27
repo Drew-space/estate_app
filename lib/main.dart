@@ -17,6 +17,7 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   await Hive.initFlutter();
+  await Hive.openBox('userBox');
   await Hive.openBox("favouritesBox");
 
   runApp(const ProviderScope(child: MyApp()));
