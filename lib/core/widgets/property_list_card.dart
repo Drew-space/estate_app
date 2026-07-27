@@ -150,7 +150,7 @@ class PropertyListCard extends ConsumerWidget {
                   const SizedBox(height: 10),
 
                   Text(
-                    house["price"] ?? "",
+                    house["price"]?.toString() ?? "",
                     style: const TextStyle(
                       color: Color(0xff246BFD),
                       fontWeight: FontWeight.w700,

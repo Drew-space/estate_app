@@ -1,5 +1,6 @@
 import 'package:estate_app/core/network/connectivity_provider.dart';
 import 'package:estate_app/core/widgets/real_navbar.dart';
+
 import 'package:estate_app/features/auth/view/auth_screen.dart';
 import 'package:estate_app/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';

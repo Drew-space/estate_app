@@ -25,14 +25,14 @@ class RealUserprofileRow extends StatelessWidget {
 
               children: [
                 Text(
-                  "Good Morning",
+                  "Welcome back",
                   style: TextStyle(fontSize: 14, color: Colors.grey[600]),
                 ),
                 DefaultTextStyle(
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: Colors.blue,
+                    color: Colors.black,
                   ),
                   child: const GetUserName(),
                 ),

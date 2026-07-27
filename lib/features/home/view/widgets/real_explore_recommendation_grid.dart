@@ -90,7 +90,7 @@ class RealExploreRecommendationGrid extends ConsumerWidget {
                 image: coverImage,
                 title: house["title"] ?? "",
                 location: house["location"] ?? "",
-                price: house["price"] ?? "",
+                price: house["price"]?.toString() ?? "",
               ),
             );
           },

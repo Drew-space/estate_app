@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/adapters.dart';
+import '../data/house_repository.dart';
 
 final categoriesProvider = Provider<List<String>>((ref) {
   return ["All", "House", "Villa", "Apartments", "Office"];
@@ -56,182 +57,48 @@ final favoritesProvider = NotifierProvider<FavoritesNotifier, Set<String>>(
   FavoritesNotifier.new,
 );
 
-/// All houses
-final housesProvider = Provider<List<Map<String, dynamic>>>((ref) {
-  return [
-    {
-      "id": "h1",
-      "images": [
-        "https://media.vrbo.com/lodging/93000000/92750000/92749300/92749255/78a6905c.jpg?impolicy=resizecrop&rw=575&rh=575&ra=fill",
-        "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200",
-        "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1200",
-      ],
-      "title": "La Grand Maison",
-      "location": "Tokyo, Japan",
-      "price": "\$1224",
-      "category": "House",
-      "description":
-          "A sleek, modern home nestled in a quiet Tokyo neighborhood, offering open living spaces, high-end finishes, and easy access to downtown dining and transit.",
-      "agentName": "Natasya Wilodra",
-      "agentRole": "Owner",
-      "agentImage": "https://randomuser.me/api/portraits/women/65.jpg",
-      "rating": 4.8,
-      "reviews": 1275,
-      "beds": "3 Beds",
-      "baths": "2 Bath",
-      "sqft": "1450 sqft",
-      "facilities": [
-        "Car Parking",
-        "Wi-fi & Network",
-        "Gym & Fitness",
-        "Laundry",
-      ],
-      "address": "Grand City St. 100, Tokyo, Japan",
-    },
-    {
-      "id": "h2",
-      "images": [
-        "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1200",
-      ],
-      "title": "Modern Villa",
-      "location": "Tokyo, Japan",
-      "price": "\$1424",
-      "category": "Villa",
-      "description":
-          "A bright, minimalist villa with floor-to-ceiling windows, a private garden, and a fully equipped modern kitchen.",
-      "agentName": "Charolette Hanlin",
-      "agentRole": "Agent",
-      "agentImage": "https://randomuser.me/api/portraits/women/44.jpg",
-      "rating": 4.6,
-      "reviews": 150,
-      "beds": "Studio",
-      "baths": "1 Bath",
-      "sqft": "850 sqft",
-      "facilities": ["Swimming Pool", "Pet Center", "Sport Center"],
-      "address": "Azizi Riviera, Meydan, Tokyo",
-    },
-    {
-      "id": "h3",
-      "images": [
-        "https://cdn.furnishedhousing.com/property-images/8242683_R.jpg",
-        "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1200",
-      ],
-      "title": "Sky Apartments",
-      "location": "Tokyo, Japan",
-      "price": "\$17821",
-      "category": "Apartments",
-      "description":
-          "Spacious two-bedroom apartment with a private balcony, hotel-style amenities, and a 24-hour concierge.",
-      "agentName": "Natasya Wilodra",
-      "agentRole": "Owner",
-      "agentImage": "https://randomuser.me/api/portraits/women/65.jpg",
-      "rating": 4.8,
-      "reviews": 1275,
-      "beds": "2 Beds",
-      "baths": "2 Bath",
-      "sqft": "1100 sqft",
-      "facilities": [
-        "Car Parking",
-        "Restaurant",
-        "Wi-fi & Network",
-        "Gym & Fitness",
-      ],
-      "address": "Grand City St. 100, Tokyo, Japan",
-    },
-    {
-      "id": "h4",
-      "images": [
-        "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1200",
-      ],
-      "title": "Business Office",
-      "location": "Tokyo, Japan",
-      "price": "\$21469",
-      "category": "Office",
-      "description":
-          "An executive office space featuring a reception area, meeting rooms, and high-speed internet, ideal for growing teams.",
-      "agentName": "Charolette Hanlin",
-      "agentRole": "Agent",
-      "agentImage": "https://randomuser.me/api/portraits/women/44.jpg",
-      "rating": 4.5,
-      "reviews": 92,
-      "beds": "—",
-      "baths": "2 Bath",
-      "sqft": "2000 sqft",
-      "facilities": ["Car Parking", "Wi-fi & Network", "Sport Center"],
-      "address": "9 Evergreen Center, Tokyo, Japan",
-    },
-    {
-      "id": "h5",
-      "images": [
-        "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200",
-        "https://cdn.furnishedhousing.com/property-images/8242683_R.jpg",
-        "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1200",
-      ],
-      "title": "Luxury House",
-      "location": "Osaka, Japan",
-      "price": "\$4200",
-      "category": "House",
-      "description":
-          "A stately family home set in a gated community, with six bedrooms, a home cinema, and a private pool.",
-      "agentName": "Natasya Wilodra",
-      "agentRole": "Owner",
-      "agentImage": "https://randomuser.me/api/portraits/women/65.jpg",
-      "rating": 4.9,
-      "reviews": 540,
-      "beds": "6 Beds",
-      "baths": "5 Bath",
-      "sqft": "3200 sqft",
-      "facilities": [
-        "Car Parking",
-        "Swimming Pool",
-        "Gym & Fitness",
-        "Pet Center",
-      ],
-      "address": "488 Forwell Road, Osaka, Japan",
-    },
-    {
-      "id": "h6",
-      "images": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrMaagRTKYK-vt8N_UkWtAkjBMAnU3rrerCs_t06kAWV5zigPMuaAqRTA&s=10",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9G9ej0B0_IrG5uIDbghfSdTl7ZCO2TbqhLeHjggYYbCK04tigLL7HexRj&s=10",
-      ],
-      "title": "Green Villa",
-      "location": "Kyoto, Japan",
-      "price": "\$8500",
-      "category": "Villa",
-      "description":
-          "A peaceful villa surrounded by greenery, blending traditional architecture with modern comfort.",
-      "agentName": "Charolette Hanlin",
-      "agentRole": "Agent",
-      "agentImage": "https://randomuser.me/api/portraits/women/44.jpg",
-      "rating": 4.7,
-      "reviews": 312,
-      "beds": "4 Beds",
-      "baths": "3 Bath",
-      "sqft": "2400 sqft",
-      "facilities": ["Swimming Pool", "Restaurant", "Pet Center"],
-      "address": "657 Lukken Court, Kyoto, Japan",
-    },
-  ];
+final houseRepositoryProvider = Provider<HouseRepository>((ref) {
+  return HouseRepository();
+});
+
+final housesStreamProvider = StreamProvider<List<Map<String, dynamic>>>((ref) {
+  final repository = ref.watch(houseRepositoryProvider);
+  return repository.getHouses();
 });
 
 final filteredHousesProvider = Provider<List<Map<String, dynamic>>>((ref) {
   final selectedCategory = ref.watch(selectedCategoryProvider);
-  final houses = ref.watch(housesProvider);
 
-  if (selectedCategory == "All") {
-    return houses;
+  final housesAsyncValue = ref.watch(housesStreamProvider);
+
+  List<Map<String, dynamic>> allHouses = [];
+
+  if (housesAsyncValue.hasValue) {
+    allHouses = housesAsyncValue.value!;
   }
 
-  return houses
-      .where((house) => house["category"] == selectedCategory)
-      .toList();
+  if (selectedCategory == "All") {
+    return allHouses;
+  }
+
+  List<Map<String, dynamic>> filtered = [];
+  for (var house in allHouses) {
+    if (house["category"] == selectedCategory) {
+      filtered.add(house);
+    }
+  }
+
+  return filtered;
 });
 
-/// This gives me only the houses that are currently favorited.
-/// I use this on the Favorites screen instead of housesProvider.
 final favoriteHousesProvider = Provider<List<Map<String, dynamic>>>((ref) {
-  final allHouses = ref.watch(housesProvider);
+  final housesAsyncValue = ref.watch(housesStreamProvider);
+
+  List<Map<String, dynamic>> allHouses = [];
+  if (housesAsyncValue.hasValue) {
+    allHouses = housesAsyncValue.value!;
+  }
+
   final favoriteIds = ref.watch(favoritesProvider);
   final selectedCategory = ref.watch(selectedCategoryProvider);
 

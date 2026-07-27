@@ -516,7 +516,7 @@ class _PropertyDetailScreenState extends ConsumerState<PropertyDetailScreen> {
                             ),
                           ),
                           Text(
-                            house["price"] ?? "",
+                            house["price"]?.toString() ?? "",
                             style: const TextStyle(
                               fontSize: 19,
                               fontWeight: FontWeight.w800,

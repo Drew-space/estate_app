@@ -156,15 +156,6 @@ class Recommendation extends ConsumerWidget {
                           ),
                         ),
 
-                        // ClipRRect(
-                        //   borderRadius: BorderRadius.circular(16),
-                        //   child: Image.network(
-                        //     coverImage,
-                        //     height: 150,
-                        //     width: double.infinity,
-                        //     fit: BoxFit.cover,
-                        //   ),
-                        // ),
                         Positioned(
                           top: 10,
                           right: 10,
@@ -215,7 +206,7 @@ class Recommendation extends ConsumerWidget {
                   const SizedBox(height: 6),
 
                   Text(
-                    house["location"] ?? "",
+                    house["location"]?.toString() ?? "",
                     style: TextStyle(color: Colors.grey.shade600, fontSize: 13),
                   ),
 
@@ -225,7 +216,7 @@ class Recommendation extends ConsumerWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        house["price"] ?? "",
+                        house["price"]?.toString() ?? "",
                         style: const TextStyle(
                           color: Colors.blue,
                           fontWeight: FontWeight.w700,
