@@ -73,11 +73,6 @@ class _PropertyDetailScreenState extends ConsumerState<PropertyDetailScreen> {
                         },
                         itemCount: images.length,
                         itemBuilder: (context, index) {
-                          // return Image.network(
-                          //   images[index],
-                          //   fit: BoxFit.cover,
-                          //   width: double.infinity,
-                          // );
                           return CachedNetworkImage(
                             imageUrl: images[index],
                             fit: BoxFit.cover,
@@ -385,56 +380,56 @@ class _PropertyDetailScreenState extends ConsumerState<PropertyDetailScreen> {
                         ],
 
                         /// GALLERY — only if more than 1 image
-                        if (images.length > 1) ...[
-                          const Text(
-                            "Gallery",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                          const SizedBox(height: 12),
-                          SizedBox(
-                            height: 80,
-                            child: ListView.separated(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: images.length,
-                              separatorBuilder: (_, __) =>
-                                  const SizedBox(width: 10),
-                              itemBuilder: (context, index) {
-                                return ClipRRect(
-                                  borderRadius: BorderRadius.circular(14),
-                                  // child: Image.network(
-                                  //   images[index],
-                                  //   width: 80,
-                                  //   height: 80,
-                                  //   fit: BoxFit.cover,
-                                  // ),
-                                  child: CachedNetworkImage(
-                                    imageUrl: images[index],
-                                    height: 80,
-                                    width: 80,
-                                    fit: BoxFit.cover,
-                                    placeholder: (context, url) => Container(
-                                      color: Colors.grey.shade200,
-                                      child: const Center(
-                                        child: CircularProgressIndicator(
-                                          strokeWidth: 2,
-                                        ),
-                                      ),
-                                    ),
-                                    errorWidget: (context, url, error) =>
-                                        Container(
-                                          color: Colors.grey.shade200,
-                                          child: const Icon(Icons.broken_image),
-                                        ),
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
-                          const SizedBox(height: 24),
-                        ],
+                        // if (images.length > 1) ...[
+                        //   const Text(
+                        //     "Gallery",
+                        //     style: TextStyle(
+                        //       fontSize: 16,
+                        //       fontWeight: FontWeight.w700,
+                        //     ),
+                        //   ),
+                        //   const SizedBox(height: 12),
+                        //   SizedBox(
+                        //     height: 80,
+                        //     child: ListView.separated(
+                        //       scrollDirection: Axis.horizontal,
+                        //       itemCount: images.length,
+                        //       separatorBuilder: (_, __) =>
+                        //           const SizedBox(width: 10),
+                        //       itemBuilder: (context, index) {
+                        //         return ClipRRect(
+                        //           borderRadius: BorderRadius.circular(14),
+                        //           // child: Image.network(
+                        //           //   images[index],
+                        //           //   width: 80,
+                        //           //   height: 80,
+                        //           //   fit: BoxFit.cover,
+                        //           // ),
+                        //           child: CachedNetworkImage(
+                        //             imageUrl: images[index],
+                        //             height: 80,
+                        //             width: 80,
+                        //             fit: BoxFit.cover,
+                        //             placeholder: (context, url) => Container(
+                        //               color: Colors.grey.shade200,
+                        //               child: const Center(
+                        //                 child: CircularProgressIndicator(
+                        //                   strokeWidth: 2,
+                        //                 ),
+                        //               ),
+                        //             ),
+                        //             errorWidget: (context, url, error) =>
+                        //                 Container(
+                        //                   color: Colors.grey.shade200,
+                        //                   child: const Icon(Icons.broken_image),
+                        //                 ),
+                        //           ),
+                        //         );
+                        //       },
+                        //     ),
+                        //   ),
+                        //   const SizedBox(height: 24),
+                        // ],
 
                         /// LOCATION
                         const Text(
