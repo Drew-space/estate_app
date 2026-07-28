@@ -20,7 +20,7 @@ class RealFavourite extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final categories = ref.watch(categoriesProvider);
-    final selectedCategory = ref.watch(selectedCategoryProvider);
+    final selectedCategory = ref.watch(favouritesCategoryProvider);
     final favoriteHouses = ref.watch(favoriteHousesProvider);
 
     return Scaffold(
@@ -34,18 +34,6 @@ class RealFavourite extends ConsumerWidget {
               /// TOP BAR — just back arrow + "Favorites", no notification icon
               Row(
                 children: [
-                  GestureDetector(
-                    onTap: () => Navigator.pop(context),
-                    child: Container(
-                      height: 42,
-                      width: 42,
-                      decoration: BoxDecoration(
-                        color: const Color(0xffEEF2F6),
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                      child: const Icon(Icons.arrow_back),
-                    ),
-                  ),
                   const Expanded(
                     child: Center(
                       child: Text(
@@ -57,11 +45,8 @@ class RealFavourite extends ConsumerWidget {
                       ),
                     ),
                   ),
-
-                  const SizedBox(width: 42),
                 ],
               ),
-
               const SizedBox(height: 20),
 
               SizedBox(
@@ -76,7 +61,7 @@ class RealFavourite extends ConsumerWidget {
 
                     return GestureDetector(
                       onTap: () {
-                        ref.read(selectedCategoryProvider.notifier).state =
+                        ref.read(favouritesCategoryProvider.notifier).state =
                             category;
                       },
                       child: Container(

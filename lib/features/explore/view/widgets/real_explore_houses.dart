@@ -6,14 +6,14 @@ import 'package:estate_app/features/property_detail/view/property_detail_screen.
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class Recommendation extends ConsumerWidget {
-  Recommendation({super.key});
+class RealExploreHouses extends ConsumerWidget {
+  RealExploreHouses({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final categories = ref.watch(categoriesProvider);
-    final houses = ref.watch(homeFilteredHousesProvider);
-    final selectedCategory = ref.watch(homeCategoryProvider);
+    final houses = ref.watch(exploreFilteredHousesProvider);
+    final selectedCategory = ref.watch(exploreCategoryProvider);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -58,7 +58,7 @@ class Recommendation extends ConsumerWidget {
 
               return GestureDetector(
                 onTap: () {
-                  ref.read(homeCategoryProvider.notifier).state = category;
+                  ref.read(exploreCategoryProvider.notifier).state = category;
                 },
                 child: Container(
                   padding: const EdgeInsets.symmetric(
@@ -100,6 +100,9 @@ class Recommendation extends ConsumerWidget {
             final images = List<String>.from(house["images"] ?? []);
             final coverImage = images.isNotEmpty ? images.first : "";
             final houseId = house["id"] as String;
+
+            // watching favoritesProvider here means: when THIS house's
+            // favorite status flips, only this card rebuilds.
             final isFavorite = ref.watch(favoritesProvider).contains(houseId);
 
             return Container(
@@ -118,6 +121,7 @@ class Recommendation extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  /// Image — ONLY this part navigates to the detail page.
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
