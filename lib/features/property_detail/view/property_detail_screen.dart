@@ -61,7 +61,6 @@ class _PropertyDetailScreenState extends ConsumerState<PropertyDetailScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                /// IMAGE CAROUSEL
                 Stack(
                   children: [
                     SizedBox(
@@ -77,14 +76,10 @@ class _PropertyDetailScreenState extends ConsumerState<PropertyDetailScreen> {
                             imageUrl: images[index],
                             fit: BoxFit.cover,
                             width: double.infinity,
-                            placeholder: (context, url) => Container(
-                              color: Colors.grey.shade200,
-                              child: const Center(
-                                child: CircularProgressIndicator(
-                                  strokeWidth: 2,
-                                ),
-                              ),
-                            ),
+
+                            placeholder: (context, url) =>
+                                Container(color: Colors.grey.shade200),
+
                             errorWidget: (context, url, error) => Container(
                               color: Colors.grey.shade200,
                               child: const Icon(Icons.broken_image),
@@ -94,7 +89,6 @@ class _PropertyDetailScreenState extends ConsumerState<PropertyDetailScreen> {
                       ),
                     ),
 
-                    // (back, share, favorite)
                     SafeArea(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
@@ -148,7 +142,7 @@ class _PropertyDetailScreenState extends ConsumerState<PropertyDetailScreen> {
                               dotHeight: 7,
                               dotWidth: 7,
                               spacing: 6,
-                              activeDotColor: Color(0xff246BFD),
+                              activeDotColor: Colors.blue,
                               dotColor: Colors.white70,
                             ),
                           ),
@@ -194,7 +188,6 @@ class _PropertyDetailScreenState extends ConsumerState<PropertyDetailScreen> {
 
                         const SizedBox(height: 12),
 
-                        /// TITLE + RATING
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -256,7 +249,6 @@ class _PropertyDetailScreenState extends ConsumerState<PropertyDetailScreen> {
 
                         const SizedBox(height: 18),
 
-                        ///  (beds / baths / sqft)
                         Row(
                           children: [
                             _InfoPill(
@@ -280,7 +272,6 @@ class _PropertyDetailScreenState extends ConsumerState<PropertyDetailScreen> {
                         const Divider(),
                         const SizedBox(height: 20),
 
-                        ///  agent
                         const Text(
                           "Agent",
                           style: TextStyle(
@@ -379,59 +370,6 @@ class _PropertyDetailScreenState extends ConsumerState<PropertyDetailScreen> {
                           const SizedBox(height: 24),
                         ],
 
-                        /// GALLERY — only if more than 1 image
-                        // if (images.length > 1) ...[
-                        //   const Text(
-                        //     "Gallery",
-                        //     style: TextStyle(
-                        //       fontSize: 16,
-                        //       fontWeight: FontWeight.w700,
-                        //     ),
-                        //   ),
-                        //   const SizedBox(height: 12),
-                        //   SizedBox(
-                        //     height: 80,
-                        //     child: ListView.separated(
-                        //       scrollDirection: Axis.horizontal,
-                        //       itemCount: images.length,
-                        //       separatorBuilder: (_, __) =>
-                        //           const SizedBox(width: 10),
-                        //       itemBuilder: (context, index) {
-                        //         return ClipRRect(
-                        //           borderRadius: BorderRadius.circular(14),
-                        //           // child: Image.network(
-                        //           //   images[index],
-                        //           //   width: 80,
-                        //           //   height: 80,
-                        //           //   fit: BoxFit.cover,
-                        //           // ),
-                        //           child: CachedNetworkImage(
-                        //             imageUrl: images[index],
-                        //             height: 80,
-                        //             width: 80,
-                        //             fit: BoxFit.cover,
-                        //             placeholder: (context, url) => Container(
-                        //               color: Colors.grey.shade200,
-                        //               child: const Center(
-                        //                 child: CircularProgressIndicator(
-                        //                   strokeWidth: 2,
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //             errorWidget: (context, url, error) =>
-                        //                 Container(
-                        //                   color: Colors.grey.shade200,
-                        //                   child: const Icon(Icons.broken_image),
-                        //                 ),
-                        //           ),
-                        //         );
-                        //       },
-                        //     ),
-                        //   ),
-                        //   const SizedBox(height: 24),
-                        // ],
-
-                        /// LOCATION
                         const Text(
                           "Location",
                           style: TextStyle(
@@ -460,8 +398,6 @@ class _PropertyDetailScreenState extends ConsumerState<PropertyDetailScreen> {
                           ],
                         ),
 
-                        /// space for the sticky bottom bar so content
-                        /// doesn't get hidden behind it
                         const SizedBox(height: 110),
                       ],
                     ),
@@ -471,7 +407,6 @@ class _PropertyDetailScreenState extends ConsumerState<PropertyDetailScreen> {
             ),
           ),
 
-          /// FLOATING PRICE / BOOKING BAR
           Positioned(
             left: 20,
             right: 20,
@@ -554,7 +489,6 @@ class _PropertyDetailScreenState extends ConsumerState<PropertyDetailScreen> {
   }
 }
 
-/// Small reusable circular icon button used in the top bar + agent row
 class _CircleIconButton extends StatelessWidget {
   final dynamic icon;
   final VoidCallback onTap;
@@ -583,7 +517,6 @@ class _CircleIconButton extends StatelessWidget {
   }
 }
 
-/// Beds / Baths / Sqft pill
 class _InfoPill extends StatelessWidget {
   final dynamic icon;
   final String label;
@@ -613,7 +546,6 @@ class _InfoPill extends StatelessWidget {
   }
 }
 
-/// Facility icon + label, used in the Wrap grid
 class _FacilityItem extends StatelessWidget {
   final dynamic icon;
   final String label;

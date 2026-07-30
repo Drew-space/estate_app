@@ -1,4 +1,5 @@
 import 'package:estate_app/core/widgets/get_user_name.dart';
+import 'package:estate_app/features/auth/view/auth_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
@@ -97,7 +98,7 @@ class _RealProfileState extends State<RealProfile> {
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.w700,
-                  color: Colors.blue,
+                  color: Colors.black,
                 ),
                 child: GetUserName(),
               ),
@@ -162,8 +163,14 @@ class _RealProfileState extends State<RealProfile> {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  onTap: () {
-                    FirebaseAuth.instance.signOut();
+                  onTap: () async {
+                    await FirebaseAuth.instance.signOut();
+                    if (context.mounted) {
+                      Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(builder: (_) => const AuthScreen()),
+                        (route) => false,
+                      );
+                    }
                   },
                 ),
               ),

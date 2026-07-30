@@ -2,50 +2,23 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:estate_app/features/explore/view/real_explore.dart';
 import 'package:estate_app/features/home/viewmodel/house_provider.dart';
 import 'package:estate_app/features/property_detail/view/property_detail_screen.dart';
-import 'package:shimmer/shimmer.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class Recommendation extends ConsumerWidget {
-  Recommendation({super.key});
+class RealExploreHouses extends ConsumerWidget {
+  RealExploreHouses({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final categories = ref.watch(categoriesProvider);
-    final houses = ref.watch(homeFilteredHousesProvider);
-    final selectedCategory = ref.watch(homeCategoryProvider);
+    final houses = ref.watch(exploreFilteredHousesProvider);
+    final selectedCategory = ref.watch(exploreCategoryProvider);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        /// Header
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text(
-              "Our Recommendation",
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const RealExplore()),
-                );
-              },
-              child: const Text(
-                "See All",
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  color: Colors.blue,
-                ),
-              ),
-            ),
-          ],
-        ),
-
         const SizedBox(height: 16),
 
-        /// Categories
         SizedBox(
           height: 42,
           child: ListView.separated(
@@ -58,7 +31,7 @@ class Recommendation extends ConsumerWidget {
 
               return GestureDetector(
                 onTap: () {
-                  ref.read(homeCategoryProvider.notifier).state = category;
+                  ref.read(exploreCategoryProvider.notifier).state = category;
                 },
                 child: Container(
                   padding: const EdgeInsets.symmetric(
@@ -84,6 +57,7 @@ class Recommendation extends ConsumerWidget {
 
         const SizedBox(height: 20),
 
+        /// Grid
         GridView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
@@ -99,6 +73,7 @@ class Recommendation extends ConsumerWidget {
             final images = List<String>.from(house["images"] ?? []);
             final coverImage = images.isNotEmpty ? images.first : "";
             final houseId = house["id"] as String;
+
             final isFavorite = ref.watch(favoritesProvider).contains(houseId);
 
             return Container(
@@ -137,17 +112,15 @@ class Recommendation extends ConsumerWidget {
                             width: double.infinity,
                             fit: BoxFit.cover,
 
-                            placeholder: (context, url) => Shimmer.fromColors(
-                              baseColor: Colors.grey.shade300,
-                              highlightColor: Colors.grey.shade100,
-                              child: Container(
-                                height: 150,
-                                width: double.infinity,
-                                color: Colors.white,
-                              ),
+                            placeholder: (context, url) => Container(
+                              height: 150,
+                              width: double.infinity,
+                              color: Colors.grey.shade300,
                             ),
 
                             errorWidget: (context, url, error) => Container(
+                              height: 150,
+                              width: double.infinity,
                               color: Colors.grey.shade200,
                               child: const Icon(Icons.broken_image),
                             ),

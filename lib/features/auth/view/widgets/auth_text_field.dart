@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 
-/// A label + input field combo used for Name, Email, Password, etc.
-/// Pass [isPasswordField] to get a show/hide eye toggle.
 class AuthTextField extends StatelessWidget {
   final String label;
   final TextEditingController controller;

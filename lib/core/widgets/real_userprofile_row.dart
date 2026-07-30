@@ -1,7 +1,6 @@
 import 'package:estate_app/core/widgets/get_user_name.dart';
 import 'package:estate_app/core/widgets/real_notificationIcon.dart';
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class RealUserprofileRow extends StatelessWidget {
   const RealUserprofileRow({super.key});

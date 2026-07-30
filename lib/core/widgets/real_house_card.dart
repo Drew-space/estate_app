@@ -52,7 +52,6 @@ class HouseCard extends StatelessWidget {
                   ),
                 ),
 
-                /// RATING BADGE — top right
                 Positioned(
                   top: 14,
                   right: 14,

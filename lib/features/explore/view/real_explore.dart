@@ -1,6 +1,6 @@
 import 'package:estate_app/core/widgets/real_navbar.dart';
+import 'package:estate_app/features/explore/view/widgets/real_explore_houses.dart';
 import 'package:estate_app/features/explore/view/widgets/real_explore_search_bar.dart';
-import 'package:estate_app/features/home/view/widgets/recommendation.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 
@@ -13,7 +13,6 @@ class RealExplore extends StatelessWidget {
   }
 }
 
-/// MAIN SCREEN
 class PropertySearchScreen extends StatelessWidget {
   const PropertySearchScreen({super.key});
 
@@ -69,8 +68,7 @@ class PropertySearchScreen extends StatelessWidget {
 
                 const SizedBox(height: 20),
 
-                /// GRID
-                Recommendation(),
+                RealExploreHouses(),
               ],
             ),
           ),
