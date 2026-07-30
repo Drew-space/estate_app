@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// "Let's Get You Closer To [Your Ideal Home]" headline,
-/// plus the small Google subtext underneath.
 class AuthHeadline extends StatelessWidget {
   final Color highlightColor;
 
