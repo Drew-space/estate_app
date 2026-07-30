@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Single image asset (already a 3x3 grid baked in) with a
-/// rounded blue border and a caption underneath.
 class AuthImageHeader extends StatelessWidget {
   final String imagePath;
 

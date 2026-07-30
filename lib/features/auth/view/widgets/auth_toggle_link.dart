@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// "Already have an account? Login" / "Don't have an account? Sign Up"
-/// tappable text that flips the bottom sheet between modes.
 class AuthToggleLink extends StatelessWidget {
   final bool isSignUp;
   final Color highlightColor;
