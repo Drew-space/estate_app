@@ -49,12 +49,6 @@ class PropertyListCard extends ConsumerWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(14),
-                  // child: Image.network(
-                  //   coverImage,
-                  //   height: 88,
-                  //   width: 88,
-                  //   fit: BoxFit.cover,
-                  // ),
                   child: CachedNetworkImage(
                     imageUrl: coverImage,
                     height: 88,
@@ -105,7 +99,6 @@ class PropertyListCard extends ConsumerWidget {
 
             const SizedBox(width: 14),
 
-            /// INFO
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

@@ -84,7 +84,6 @@ class Recommendation extends ConsumerWidget {
 
         const SizedBox(height: 20),
 
-        /// Grid
         GridView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
@@ -223,8 +222,6 @@ class Recommendation extends ConsumerWidget {
                         ),
                       ),
 
-                      /// HEART — separate tap zone from the image above.
-                      // Tapping ONLY toggles favorite, never navigates.
                       GestureDetector(
                         onTap: () {
                           ref.read(favoritesProvider.notifier).toggle(houseId);

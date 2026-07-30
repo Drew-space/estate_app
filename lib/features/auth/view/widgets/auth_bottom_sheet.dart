@@ -7,8 +7,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'auth_text_field.dart';
 import 'auth_toggle_link.dart';
 
-/// The bottom sheet itself — handles its own toggle state between
-/// Sign Up and Login, and navigates to RealNavbar() on submit.
 class AuthBottomSheet extends StatefulWidget {
   final bool startAsSignUp;
   final Color primaryColor;

@@ -17,35 +17,8 @@ class RealExploreHouses extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        /// Header
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text(
-              "Our Recommendation",
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const RealExplore()),
-                );
-              },
-              child: const Text(
-                "See All",
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  color: Colors.blue,
-                ),
-              ),
-            ),
-          ],
-        ),
-
         const SizedBox(height: 16),
 
-        /// Categories
         SizedBox(
           height: 42,
           child: ListView.separated(
@@ -101,8 +74,6 @@ class RealExploreHouses extends ConsumerWidget {
             final coverImage = images.isNotEmpty ? images.first : "";
             final houseId = house["id"] as String;
 
-            // watching favoritesProvider here means: when THIS house's
-            // favorite status flips, only this card rebuilds.
             final isFavorite = ref.watch(favoritesProvider).contains(houseId);
 
             return Container(
@@ -121,7 +92,6 @@ class RealExploreHouses extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  /// Image — ONLY this part navigates to the detail page.
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -141,15 +111,16 @@ class RealExploreHouses extends ConsumerWidget {
                             height: 150,
                             width: double.infinity,
                             fit: BoxFit.cover,
+
                             placeholder: (context, url) => Container(
-                              color: Colors.grey.shade200,
-                              child: const Center(
-                                child: CircularProgressIndicator(
-                                  strokeWidth: 2,
-                                ),
-                              ),
+                              height: 150,
+                              width: double.infinity,
+                              color: Colors.grey.shade300,
                             ),
+
                             errorWidget: (context, url, error) => Container(
+                              height: 150,
+                              width: double.infinity,
                               color: Colors.grey.shade200,
                               child: const Icon(Icons.broken_image),
                             ),
@@ -224,8 +195,6 @@ class RealExploreHouses extends ConsumerWidget {
                         ),
                       ),
 
-                      /// HEART — separate tap zone from the image above.
-                      // Tapping ONLY toggles favorite, never navigates.
                       GestureDetector(
                         onTap: () {
                           ref.read(favoritesProvider.notifier).toggle(houseId);

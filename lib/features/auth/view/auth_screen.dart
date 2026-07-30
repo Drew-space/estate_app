@@ -6,13 +6,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter/services.dart';
 
-/// AuthScreen
-/// -----------
-/// Composes the extracted components from utils/:
-/// - AuthImageHeader  -> image + "WELCOME TO REAL SCOUT" caption
-/// - AuthHeadline     -> "Let's Get You Closer..." + Google subtext
-/// - AuthActionButtons -> Sign Up / Login button row
-/// - AuthBottomSheet  -> the modal with the form + toggle (own file)
 class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});
 

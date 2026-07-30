@@ -98,7 +98,7 @@ class _RealProfileState extends State<RealProfile> {
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.w700,
-                  color: Colors.blue,
+                  color: Colors.black,
                 ),
                 child: GetUserName(),
               ),
@@ -167,9 +167,7 @@ class _RealProfileState extends State<RealProfile> {
                     await FirebaseAuth.instance.signOut();
                     if (context.mounted) {
                       Navigator.of(context).pushAndRemoveUntil(
-                        MaterialPageRoute(
-                          builder: (_) => const AuthScreen(),
-                        ), // swap in your actual auth screen widget
+                        MaterialPageRoute(builder: (_) => const AuthScreen()),
                         (route) => false,
                       );
                     }

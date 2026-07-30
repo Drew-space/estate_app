@@ -1,14 +1,3 @@
-// import 'package:flutter/material.dart';
-
-// class  extends StatelessWidget {
-//   const RealFavourite({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return const Scaffold(backgroundColor: Colors.white);
-//   }
-// }
-
 import 'package:estate_app/core/widgets/property_list_card.dart';
 import 'package:estate_app/features/home/viewmodel/house_provider.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +20,6 @@ class RealFavourite extends ConsumerWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              /// TOP BAR — just back arrow + "Favorites", no notification icon
               Row(
                 children: [
                   const Expanded(
@@ -90,7 +78,6 @@ class RealFavourite extends ConsumerWidget {
 
               const SizedBox(height: 20),
 
-              /// LIST or EMPTY STATE
               Expanded(
                 child: favoriteHouses.isEmpty
                     ? const _EmptyFavorites()

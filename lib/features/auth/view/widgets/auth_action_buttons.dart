@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// The two side-by-side buttons — Sign Up (filled) and Login (outlined) —
-/// each opening the auth bottom sheet in its respective mode.
 class AuthActionButtons extends StatelessWidget {
   final Color primaryColor;
   final VoidCallback onSignUpTap;
