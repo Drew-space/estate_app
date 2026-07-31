@@ -3,7 +3,7 @@ import 'package:estate_app/features/auth/view/widgets/auth_bottom_sheet.dart';
 import 'package:estate_app/features/auth/view/widgets/auth_headline.dart';
 import 'package:estate_app/features/auth/view/widgets/auth_image_header.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 
 class AuthScreen extends StatelessWidget {
